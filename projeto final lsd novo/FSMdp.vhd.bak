@@ -1,0 +1,230 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+
+entity FSMdp is
+	port(reset			:	in		std_logic;
+		  clk				:	in		std_logic;
+		  En				:	in		std_logic;
+		  coin5			:	in		std_logic; --5 cêntimos;
+		  coin10			:	in 	std_logic; --10 cêntimos;
+		  coin20		   :	in		std_logic; --20 cêntimos;
+		  coin50			:	in		std_logic; --50 cêntimo.
+		  ResetQuant	:	out	std_logic;
+		  OPenProd		:	out	std_logic);
+
+end FSMdp;
+
+architecture MealyArch of FSMdp is
+	type TState is (init, trinta, quarentacinco, cinquenta, final);
+	signal s_currentState, s_nextState : TState;
+	
+begin
+	sync_proc : process(clk)
+	begin
+		if(rising_edge(clk)) then
+			if (En = '0') then
+				s_currentState <= stopped;
+			else
+				s_currentState <= s_nextState;
+			end if;
+		end if;
+	end process;
+	
+	comb_proc : process(s_currentState, coin5, coin10, coin20, coin50, reset, En)
+	
+	begin
+	OpenProd <= '0';
+		case(s_currentState) is 
+		when stopped =>
+			ResetQuant <= 				'0';
+			OpenProd   <= 				'0';
+			--Troc1 	  <= 			"00000";
+			if (En = '1') then
+				s_nextState<=       zero;
+			elsif (reset = '1') then 
+				ResetQuant <= 				'1';
+				OpenProd   <= 				'0';
+				--Troc1 	  <= 			"00000";
+				s_nextState<=       stopped;
+			else
+				s_nextState<=	     stopped;
+			end if;
+		when zero =>
+			ResetQuant <= 	  '0';
+			OpenProd	  <= 	  '0';
+			--Troc1		  <= "00000";
+			if (reset = '1') then
+				ResetQuant 	<= 	'1';
+				OpenProd	  	<= 	'0';
+				--Troc1		  	<= "00000";
+				s_nextState	<=	  zero;
+			elsif (coin5 = '1') then
+				s_nextState <=    cinco;
+			elsif	(coin10 = '1') then
+				s_nextState <=	dez;
+			elsif (coin20 = '1') then
+				s_nextState	<=	  vinte;
+			elsif (coin50 = '1') then
+				ResetQuant 	<= 	'0';
+				OpenProd	  	<= 	'1';
+				--Troc1		  	<= "10100";  ---20
+				s_nextState	<=	  zero;
+			else
+				s_nextState <=   zero;
+			end if;
+		when cinco =>
+			ResetQuant 	<= 	'0';
+			OpenProd	  	<= 	'0';
+			--Troc1		  	<= "0000";
+			if (reset = '1') then
+				ResetQuant 	<= 	'1';
+				OpenProd	  	<= 	'0';
+				--Troc1		  	<= "0000";
+				s_nextState	<=	  zero;
+			elsif (coin5 = '1') then
+				s_nextState <= dez;
+			elsif	(coin10 = '1') then
+				s_nextState <=	quinze;
+			elsif (coin20 = '1') then
+				s_nextState	<=	  vintecinco;
+			elsif (coin50 = '1') then
+				ResetQuant 	<= 	'0';
+				OpenProd	  	<= 	'1';
+				--Troc1		  	<= "11001"; --25
+				s_nextState	<=	  zero;
+			else
+				s_nextState <=		cinco;
+			end if;
+		when dez =>
+			ResetQuant 	<= 	'0';
+			OpenProd	  	<= 	'0';
+			--Troc1		  	<= "0000";
+			if (reset = '1') then
+				ResetQuant 	<= 	'1';
+				OpenProd	  	<= 	'0';
+				--Troc1		  	<= "0000";
+				s_nextState	<=	  zero;
+			elsif (coin5 = '1') then
+				s_nextState <= quinze;
+			elsif	(coin10 = '1') then
+				s_nextState <=	vinte;
+			elsif (coin20 = '1') then
+				ResetQuant 	<= 	'0';
+				OpenProd	  	<= 	'1';
+				--Troc1		  	<= "0000";
+				s_nextState	<=	  zero;
+			elsif (coin50 = '1') then
+				ResetQuant 	<= 	'0';
+				OpenProd	  	<= 	'1';
+				--Troc1		  	<= "11110"; --30
+				s_nextState	<=	  zero;
+			else
+				s_nextState <=		dez;
+			end if;
+		when quinze =>
+			ResetQuant 	<= 	'0';
+			OpenProd	  	<= 	'0';
+			--Troc1		  	<= "0000";
+			if (reset = '1') then
+				ResetQuant 	<= 	'1';
+				OpenProd	  	<= 	'0';
+				--Troc1		  	<= "0000";
+				s_nextState	<=	  zero;
+			elsif (coin5 = '1') then
+				s_nextState <= vinte;
+			elsif (coin10 = '1') then
+				s_nextState	<=	  vintecinco;
+			elsif (coin20 = '1') then
+				ResetQuant 	<= 	'0';
+				OpenProd	  	<= 	'1';
+				--Troc1		  	<= "101";   ---5
+				s_nextState	<=	  zero;
+			elsif (coin50 = '1') then
+				ResetQuant 	<= 	'0';
+				OpenProd	  	<= 	'1';
+				--Troc1		  	<= "100011";  ---35
+				s_nextState	<=	  zero;
+			else
+				s_nextState <= quinze;
+			end if;
+		when vinte =>
+			ResetQuant 	<= 	'0';
+			OpenProd	  	<= 	'0';
+			--Troc1		  	<= "0000";
+			if (reset = '1') then
+				ResetQuant 	<= 	'1';
+				OpenProd	  	<= 	'0';
+				--Troc1		  	<= "0000";
+				s_nextState	<=	  zero;
+			elsif (coin5 = '1') then
+				s_nextState <= vintecinco;
+			elsif (coin10 = '1') then
+				ResetQuant 	<= 	'0';
+				OpenProd	  	<= 	'1';
+				--Troc1		  	<= "0000";
+				s_nextState	<=	  zero;
+			elsif (coin20 = '1') then
+				ResetQuant 	<= 	'0';
+				OpenProd	  	<= 	'1';
+				--Troc1		  	<= "1010";  ---10
+				s_nextState	<=	  zero;
+			elsif (coin50 = '1') then
+				ResetQuant 	<= 	'0';
+				OpenProd	  	<= 	'1';
+				--Troc1		  	<= "101000";   ----40
+				s_nextState	<=	  zero;
+			else
+				s_nextState <= vinte;
+			end if;
+		when vintecinco =>
+			ResetQuant 	<= 	'0';
+			OpenProd	  	<= 	'0';
+			--Troc1		  	<= "0000";
+			if (reset = '1') then
+				ResetQuant 	<= 	'1';
+				OpenProd	  	<= 	'0';
+				--Troc1		  	<= "0000";
+				s_nextState	<=	  zero;
+			elsif (coin5 = '1') then
+				ResetQuant 	<= 	'0';
+				OpenProd	  	<= 	'1';
+				--Troc1		  	<= "0000";
+				s_nextState	<=	  zero;
+			elsif (coin10 = '1') then
+				ResetQuant 	<= 	'0';
+				OpenProd	  	<= 	'1';
+				--Troc1		  	<= "101";  --5
+				s_nextState	<=	  zero;
+			elsif (coin20 = '1') then
+				ResetQuant 	<= 	'0';
+				OpenProd	  	<= 	'1';
+				--Troc1		  	<= "1111";  --15
+				s_nextState	<=	  zero;
+			elsif (coin50 = '1') then
+				ResetQuant 	<= 	'0';
+				OpenProd	  	<= 	'1';
+				--Troc1		  	<= "101101";  --45
+				s_nextState	<=	  zero;
+			else
+				s_nextState <= vintecinco;
+			end if;
+			
+		end case;
+		
+	end process;
+
+end MealyArch;
+			
+			
+				
+			
+	
+			
+			
+		
+				
+			
+				
+				
+		
+		  

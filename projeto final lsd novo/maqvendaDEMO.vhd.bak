@@ -1,0 +1,7 @@
+LIBRARY ieee;
+use IEEE.STD_LOGIC_1164.all;
+
+entity maqvendaDEMO is 
+	port(CLOCK_50 : in std_logic;
+			key : in std_logic_vector(3 downto 0);
+			sw : in std_logic_vector(3 downto 0);

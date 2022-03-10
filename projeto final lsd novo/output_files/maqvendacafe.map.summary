@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Thu May 30 05:54:15 2019
+Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+Revision Name : maqvendacafe
+Top-level Entity Name : maqvendaDEMO
+Family : Cyclone IV E
+Total logic elements : 234
+    Total combinational functions : 230
+    Dedicated logic registers : 80
+Total registers : 80
+Total pins : 26
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

@@ -1,0 +1,23 @@
+Quartus Prime Archive log --	C:/Users/couto/Desktop/Universidade/lsd/pratico3/ALUDemo_tmp_archive.qarlog
+
+Archive:	C:/Users/couto/Desktop/Universidade/lsd/pratico3/ALUDemo_tmp_archive.qar
+Date:		Wed Mar 13 12:51:01 2019
+Quartus Prime		17.1.0 Build 590 10/25/2017 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/couto/Desktop/Universidade/lsd/pratico2/Bin7SegDecoder.vhd
+C:/Users/couto/Desktop/Universidade/lsd/pratico3/ALU4.vhd
+C:/Users/couto/Desktop/Universidade/lsd/pratico3/ALUDemo.bdf
+C:/Users/couto/Desktop/Universidade/lsd/pratico3/ALUDemo.qpf
+C:/Users/couto/Desktop/Universidade/lsd/pratico3/ALUDemo.qsf
+c:/intelfpga_lite/17.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 6 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
+
+
+******* Archived project restoration attempt on Wed Mar 13 12:51:02 2019
+Source archive file:	C:/Users/couto/Desktop/Universidade/lsd/pratico3/ALUDemo_tmp_archive.qar
+Archive was extracted into	C:/Users/couto/Desktop/Universidade/lsd/pratico3_copyPARTE5/
+		 - successfully.

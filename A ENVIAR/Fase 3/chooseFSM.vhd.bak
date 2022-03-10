@@ -1,0 +1,10 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+
+entity chooseFSM is
+	port(clk : in std_logic;
+			reset : in std_logic;
+			trinta : in std_logic;
+			quacin : in std_logic;
+			cinquenta : in std_logic;
+			choosed : out std_logic);

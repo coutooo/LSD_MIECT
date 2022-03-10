@@ -1,0 +1,125 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+
+entity cent45FSM is 
+	port(	clk : in std_logic;
+			reset : in std_logic;
+			cinco : in std_logic;
+			dez : in std_logic;
+			vinte : in std_logic;
+			cinquenta : in std_logic;
+			Yout : out std_logic);
+end cent45FSM;
+
+architecture MealyArch of cent45FSM is
+	type state is (E0,E1,E2,E3,E4,E5,E6,E7,E8,E9);
+	signal PS, NS : state;
+begin
+	sync_proc : process(clk)
+	begin
+		if (rising_edge(clk)) then
+			if(reset = '1') then
+			 
+				PS <= E0;
+			 
+			 else
+				PS <= NS;
+			end if;
+		end if;
+	end process;
+combo_proc : process(PS,cinco,dez,vinte,cinquenta)
+begin
+	Yout <='0';
+	case PS is
+	when E0 =>
+		if(cinco = '1') then NS <= E1;
+		end if;
+		if(dez = '1') then NS <= E2;
+		end if;
+		if(vinte = '1') then NS <= E4;
+		end if;
+		if(cinquenta = '1') then NS <= E9;
+		Yout <= '1';
+		end if;
+	when E1 =>
+		if(cinco = '1') then NS <= E2;
+		end if;
+		if(dez = '1') then NS <= E3;
+		end if;
+		if(vinte = '1') then NS <= E5;
+		end if;
+		if(cinquenta = '1') then NS <= E9;
+		Yout <= '1';
+		end if;
+	when E2 =>
+		if(cinco = '1') then NS <= E3;
+		end if;
+		if(dez = '1') then NS <= E4;
+		end if;
+		if(vinte = '1') then NS <= E6;
+		end if;
+		if(cinquenta = '1') then NS <= E9;
+		Yout <= '1';
+		end if;
+	when E3 =>
+		if(cinco = '1') then NS <= E4;
+		end if;
+		if(dez = '1') then NS <= E5;
+		end if;
+		if(vinte = '1') then NS <= E7;
+		end if;
+		if(cinquenta = '1') then NS <= E9;
+		Yout <= '1';
+		end if;
+	when E4 =>
+		if(cinco = '1') then NS <= E5;
+		end if;
+		if(dez = '1') then NS <= E6;
+		Yout <= '1';
+		end if;
+		if(vinte = '1') then NS <= E8;
+		end if;
+		if(cinquenta = '1') then NS <= E9;
+		Yout <= '1';
+		end if;
+	when E5 =>
+		if(cinco = '1') then NS <= E6;
+		Yout <= '1';
+		end if;
+		if(dez = '1') then NS <= E7;
+		end if;
+		if(vinte = '1') then NS <= E9;
+		Yout <= '1';
+		end if;
+		if(cinquenta = '1') then NS <= E9;
+		Yout <= '1';
+		end if;
+	when E6 =>
+		if(cinco = '1') then NS <= E7;
+		Yout <= '1';
+		end if;
+		if(dez = '1') then NS <= E8;
+		end if;
+		if(vinte = '1') then NS <= E9;
+		Yout <= '1';
+		end if;
+		if(cinquenta = '1') then NS <= E9;
+		Yout <= '1';
+		end if;
+	when E7 =>
+		if(cinco = '1') then NS <= E8;
+		end if;
+		if(dez = '1') then NS <= E9;
+		Yout <= '1';
+		end if;
+		if(vinte = '1') then NS <= E9;
+		Yout <= '1';
+		end if;
+		if(cinquenta = '1') then NS <= E9;
+		Yout <= '1';
+		end if;
+	when others =>
+		NS <= E0;
+	end case;
+end process;
+end MealyArch; 

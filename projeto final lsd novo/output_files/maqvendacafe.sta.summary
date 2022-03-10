@@ -1,0 +1,77 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'CLOCK_50'
+Slack : -3.200
+TNS   : -196.254
+
+Type  : Slow 1200mV 85C Model Hold 'CLOCK_50'
+Slack : 0.458
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'FSMdp:maqestados|s_currentState.init'
+Slack : -4.606
+TNS   : -4.606
+
+Type  : Slow 1200mV 85C Model Removal 'FSMdp:maqestados|s_currentState.init'
+Slack : 0.459
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -105.800
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'FSMdp:maqestados|s_currentState.init'
+Slack : 0.426
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'CLOCK_50'
+Slack : -2.920
+TNS   : -173.603
+
+Type  : Slow 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.422
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'FSMdp:maqestados|s_currentState.init'
+Slack : -4.060
+TNS   : -4.060
+
+Type  : Slow 1200mV 0C Model Removal 'FSMdp:maqestados|s_currentState.init'
+Slack : 0.410
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -105.800
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'FSMdp:maqestados|s_currentState.init'
+Slack : 0.436
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'CLOCK_50'
+Slack : -1.170
+TNS   : -56.039
+
+Type  : Fast 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.204
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'FSMdp:maqestados|s_currentState.init'
+Slack : -1.866
+TNS   : -1.866
+
+Type  : Fast 1200mV 0C Model Removal 'FSMdp:maqestados|s_currentState.init'
+Slack : 0.226
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -88.012
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'FSMdp:maqestados|s_currentState.init'
+Slack : 0.461
+TNS   : 0.000
+
+------------------------------------------------------------

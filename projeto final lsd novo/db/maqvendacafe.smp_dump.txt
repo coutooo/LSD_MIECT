@@ -1,0 +1,8 @@
+
+State Machine - |maqvendaDEMO|FSMdp:maqestados|s_currentState
+Name s_currentState.final s_currentState.cinquenta s_currentState.quarentacinco s_currentState.trinta s_currentState.init 
+s_currentState.init 0 0 0 0 0 
+s_currentState.trinta 0 0 0 1 1 
+s_currentState.quarentacinco 0 0 1 0 1 
+s_currentState.cinquenta 0 1 0 0 1 
+s_currentState.final 1 0 0 0 1 

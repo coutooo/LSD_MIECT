@@ -1,0 +1,28 @@
+LIBRARY ieee ;
+USE ieee.std_logic_1164.all ;
+
+
+ENTITY downcnt IS
+	port(	cinco : in std_logic;
+			dez : in std_logic;
+			vinte : in std_logic;
+			cinquenta : in std_logic);
+END downcnt ;
+
+
+ARCHITECTURE Behavior OF downcnt IS
+	signal : currentM;
+BEGIN
+	PROCESS
+	BEGIN
+	if(
+	if (KEY(0)) then
+		currentM <= (currentM - "101");
+	end if;
+	if (KEY(1)) then
+		currentM <= (currentM - "1010");
+	end if;
+	if (KEY(2)) then
+		currentM <= (currentM - "10100");
+	end if;
+END PROCESS;
